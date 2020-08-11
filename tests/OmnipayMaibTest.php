@@ -44,14 +44,6 @@ class OmnipayMaibTest extends TestCase
     /**
      * @test
      */
-    public function id_can_complete_purchase(): void
-    {
-
-    }
-
-    /**
-     * @test
-     */
     public function it_uses_configuration(): void
     {
         MaibConfiguration::merchantUrl('https://ecomm.maib.md:4499/ecomm2/MerchantHandler');
