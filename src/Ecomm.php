@@ -12,8 +12,6 @@ class Ecomm
     private $clientUrl;
     private $certificatePem;
     private $certificatePass;
-    private $currency;
-    private $clientIpAddr;
     private $connectTimeout = 60;
 
     public function setMerchantCertificate($value): void
@@ -24,11 +22,6 @@ class Ecomm
     public function setMerchantCertificatePassword($value): void
     {
         $this->certificatePass = $value;
-    }
-
-    public function setCurrencyCode($currencyCode): void
-    {
-        $this->currency = $currencyCode;
     }
 
     /**
