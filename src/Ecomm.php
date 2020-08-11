@@ -126,7 +126,7 @@ class Ecomm
     {
         return $this->sendRequest([
             'command'        => 'v',
-            'amount'         => (string)($amount * 100),
+            'amount'         => (string)$amount,
             'msg_type'       => 'SMS',
             'currency'       => (string)$currency,
             'client_ip_addr' => $clientIpAddr,
