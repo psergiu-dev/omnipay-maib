@@ -66,7 +66,7 @@ class Ecomm
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $this->connectTimeout);
 
-        $result = curl_exec($ch);
+        $result = trim(curl_exec($ch));
 
         if ($this->certificatePem && isset($tempPemFile)) {
             fclose($tempPemFile);
@@ -196,10 +196,14 @@ class Ecomm
      *
      * @return array  RESULT, RESULT_PS, RESULT_CODE, 3DSECURE, RRN, APPROVAL_CODE, CARD_NUMBER, AAV, RECC_PMNT_ID,
      *                RECC_PMNT_EXPIRY, MRCH_TRANSACTION_ID RESULT               - OK              - successfully
-     *                completed transaction, FAILED          - transaction has failed, CREATED         - transaction
-     *                just registered in the system, PENDING         - transaction is not accomplished yet, DECLINED
-     *                    - transaction declined by ECOMM, REVERSED        - transaction is reversed, AUTOREVERSED    -
-     *                    transaction is reversed by autoreversal, TIMEOUT         - transaction was timed out
+     *                completed transaction,
+     *                  FAILED          - transaction has failed,
+     *                  CREATED         - transaction just registered in the system,
+     *                  PENDING         - transaction is not accomplished yet,
+     *                  DECLINED        - transaction declined by ECOMM,
+     *                  REVERSED        - transaction is reversed,
+     *                  AUTOREVERSED    - transaction is reversed by autoreversal,
+     *                  TIMEOUT         - transaction was timed out
      *                    RESULT_PS           - transaction result, Payment Server interpretation (shown only if
      *                    configured to return ECOMM2 specific details FINISHED        - successfully completed
      *                    payment, CANCELLED       - cancelled payment, RETURNED        - returned payment, ACTIVE
